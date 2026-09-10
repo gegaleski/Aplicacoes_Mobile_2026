@@ -8,7 +8,7 @@ abstract class AppTheme {
   // Cria uma variavel para armazenar o tema do app
   // Função para copiar o tema do aplicativo
 
-  static ThemeData appThema = ThemeData().copyWith(
+  static ThemeData appTheme = ThemeData.dark().copyWith(
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ButtonStyle(
         foregroundColor: WidgetStatePropertyAll(Colors.black),
