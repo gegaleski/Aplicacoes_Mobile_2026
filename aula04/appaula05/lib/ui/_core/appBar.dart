@@ -22,7 +22,7 @@ AppBar getAppBar({required BuildContext context, String? title}) {
         ),
         child: IconButton(
             onPressed: () {
-              // Navigator.push(context, MaterialPageRoute(builder: (context)=>Tela c));
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>CheckoutScreen()));
             },
             icon: Icon(Icons.shopping_basket)),
       )

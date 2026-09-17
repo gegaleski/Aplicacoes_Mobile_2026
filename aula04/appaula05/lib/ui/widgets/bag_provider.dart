@@ -1,45 +1,32 @@
-// Importa as bibliotecas
-
 import 'package:appaula05/model/dish.dart';
 import 'package:flutter/material.dart';
 
+class BagProvider extends ChangeNotifier {
+  List<Dish> dishesOnBag = [];
 
-// Cria uma denominada BagProvider
-
-class BagProvider extends ChangeNotifier{
-  List<Dish> dishesOnBag = []; // cria uma lista vazia para carregar os itens da sacola
-
-  // metodo para adicionar os itens ao carrinho
-
-  addAllDishes(List<Dish> dishes) {
-    // metodo para adicionar os itens ao carrinho
+  // Adiciona itens ao carrinho
+  void addAllDishes(List<Dish> dishes) {
     dishesOnBag.addAll(dishes);
-    // notifica cada item adicionado ao carrinho
     notifyListeners();
   }
 
-  // metodo para remover os itens do carrinho
-  removeDish(Dish dish){
+  // Remove um item do carrinho
+  void removeDish(Dish dish) {
     dishesOnBag.remove(dish);
     notifyListeners();
   }
 
-  @override
-  String toString(){
-    return 'BagProvider(dishesOnBag:$dishesOnBag)';
-  }
-
-  // função para limpar sacola
-  clearBag(){
+  // Limpa a sacola
+  void clearBag() {
     dishesOnBag.clear();
     notifyListeners();
   }
 
-  // função para calcular o total do carrinho
-
-  Map<Dish,int>getMapByAmount(){
+  // Retorna os itens agrupados pela quantidade
+  Map<Dish, int> getMapByAmount() {
     Map<Dish, int> mapResult = {};
-    for(Dish dish in dishesOnBag) {
+
+    for (Dish dish in dishesOnBag) {
       if (mapResult[dish] == null) {
         mapResult[dish] = 1;
       } else {
@@ -49,5 +36,9 @@ class BagProvider extends ChangeNotifier{
 
     return mapResult;
   }
-}
 
+  @override
+  String toString() {
+    return 'BagProvider(dishesOnBag: $dishesOnBag)';
+  }
+}
